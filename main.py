@@ -13,6 +13,17 @@ def get_max_letter(letter):
         j+=1
     return i
 
+def get_least_letter(letter):
+    least_letter = letter[0]
+    i = 0
+    j = 0
+    for u in letter:
+        if(int(u)<least_letter):
+            least_letter = u
+            i = j
+        j+=1
+    return i
+
 
 
 
@@ -20,7 +31,7 @@ letters = [0]*26
 words = 0
 
 
-file = open('dict.txt')
+file = open('omam.txt')
 
 while 1:
     char = file.read(1)
@@ -77,15 +88,21 @@ while 1:
         letters[24]+=1
     elif(char=='z'):
         letters[25]+=1
-    elif(char=='\n'):
+    elif(char=='\n' or char==' '):
         words+=1
     elif not char:
         break
 
 index = get_max_letter(letters)
+lindex = get_least_letter(letters)
 
 print("MOST USED LETTER = "+str(index)+" WITH "+str(letters[index])+" USES")
 print("WORDS = "+str(words))
+print("\n")
+print("LEAST USED LETTER = "+ str(lindex)+" WITH "+str(letters[lindex])+" USES")
+# print("\n")
+# print(letters)
+print("NUMBER OF J's = "+ str(letters[9]))
 
 
 
